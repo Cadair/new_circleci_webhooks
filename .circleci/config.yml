@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  figure:
+    parameters:
+      jobname:
+        type: string
+    docker:
+      - image: cimg/python:3.10
+    environment:
+      TOXENV=<< parameters.jobname >>
+    steps:
+      - checkout
+      - store_artifacts:
+          path: << parameters.jobname >>
+
+workflows:
+  version: 2
+
+  figure-tests:
+    jobs:
+      - figure:
+          name: << matrix.jobname >>
+          matrix:
+            parameters:
+              jobname:
+                - "index.html"
