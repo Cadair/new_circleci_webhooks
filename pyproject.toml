@@ -1,0 +1,9 @@
+
+[ tool.testbaldrick]
+
+  [ tool.testbaldrick.circleci_artifacts ]
+    enabled = true
+
+  [ tool.gilesbot.circleci_artifacts.index ]
+    url = "index.html"
+    message = "Your Index HTML"
